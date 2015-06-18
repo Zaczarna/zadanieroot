@@ -1,5 +1,5 @@
 DOCDIR := doc
-TARGET := fit.cpp
+TARGET := fitowanie.cpp
 
 .PHONY: run-fit clean doc
 

@@ -1,19 +1,9 @@
-// Double_t func(Double_t *x, Double_t *par){
-// 	Double_t xx = x[0];
-// 	Int_t bin = hist->GetXaxis()->FindBin(xx);
-// 	Double_t br = hist->GetBinContent(bin);
-// 	Double_t arg = xx-par[2];
-// 	Double_t sr = exp(-(arg)**2/(4*par[3]))/(par[3]*sqrt(2*TMath::Pi()));
-// 	return sr + br;
-// }
-
-/// model
 Double_t func2(Double_t *x, Double_t *par){
 	return par[0]*exp(-x[0]*par[1])+TMath::Gaus(x[0], par[2], par[3]);
 }
 
 /// makro fitujące funkcję do histogramu
-void fit(){
+void fitowanie(){
 
 	/// otwarcie pliku .root
 	TFile *f = new TFile("histogram.root");
@@ -52,7 +42,7 @@ void fit(){
 	hist->GetYaxis()->CenterTitle();
 
 	/// zapis histogramu do .pdf (c1 jest nazwą domyślną tworzonej kanwy)
-	c1->SaveAs("fit.pdf");
+	c1->SaveAs("fitowanie.pdf");
 
 	fstream plik("fit.txt", std::fstream::out);
 
